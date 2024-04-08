@@ -12,6 +12,13 @@ const cardList = [
     desciption: "Demo desciption about shopping"
     } 
 ]
+const getCards = () => {
+    $.get('/api/cards',(response) => {
+        if(response.statusCode==200){
+        addCards(response.data);
+        }
+    })
+}
 const clickMe = () => {
     alert("Thanks for clicking me. Have a great day!")
 }
@@ -43,6 +50,8 @@ $(document).ready(function(){
     $('#formSubmit').click(()=>{
     submitForm(); 
     })
-    addCards(cardList);
+    getCards();
     $('.modal').modal(); 
     });
+
+    
